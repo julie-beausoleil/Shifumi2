@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roche, papier, ciseaux</title>
+</head>
+
+<body>
+    <button>Roche</button>
+    <button>Papier</button>
+    <button>Ciseaux</button>
+    <div class="result"></div>
+
+    <script>
+        const buttons = document.querySelectorAll("button");
+        //console.log(buttons);
+
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function () {
+                    const choixDeLutilisateur = buttons[i].innerHTML;
+
+                    //console.log(choixDeLutilisateur);
+
+                    //Faire des tests avec le random pour équivalence 0-1-2-3...
+
+                    const numeroHasard = Math.floor(Math.random() * buttons.length);
+
+                    const choixRobot = buttons[numeroHasard].innerHTML;
+                    //
+                    console.log(`Joueur: ${choixDeLutilisateur} VS Random: ${choixRobot}`);
+
+                    // Mettre la logique du jeu ici
+
+                    var result = "";
+
+                    if (choixRobot === choixDeLutilisateur) {
+                        result = "Partie nulle";
+
+
+                    } else if ((choixDeLutilisateur === "Roche" && choixRobot === "Ciseaux") || (
+                        choixDeLutilisateur === "Papier" && choixRobot === "Roche") || (choixDeLutilisateur ===
+                        "Ciseaux" && choixRobot === "Papier"))
+
+                {
+                    result = "Yay";
+
+                } else {
+
+                    result = "Pouet pouet pouet";
+                }
+                
+                // Affiche les résultats dans la div.result
+                document.querySelector(".result").innerHTML = `<br> Joueur: ${choixDeLutilisateur} <br> Robot: ${choixRobot}<br>
+                ${result} !`;
+            });
+        }
+    </script>
+</body>
+
+</html>
